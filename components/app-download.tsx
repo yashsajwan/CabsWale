@@ -3,7 +3,7 @@ import Image from "next/image";
 const AppDownload = () => {
   return (
     <>
-    <h1>Download CabsWale App</h1>
+    <h1 className="text-3xl my-10 bg-yellow-500 p-2">Download CabsWale App</h1>
       <div className="flex justify-around">
         <Link href="https://play.google.com/store/apps/details?id=com.app.cabswalle">
           <Image

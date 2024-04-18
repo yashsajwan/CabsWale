@@ -12,9 +12,9 @@ import {
 const Vechicles = ({ userData }: any) => {
   return (
     <>
-      <div>Vechicles:</div>
+      <div className="text-3xl my-10 bg-yellow-500 p-2">Vechicles</div>
       {userData.vehicles.length === 0 ? (
-        <div>No Vechicles.</div>
+        <div className="text-3xl">No Vechicles.</div>
       ) : (
         <div className="flex justify-center items-center">
           <Carousel className="w-1/2 h-[30rem] ">
@@ -36,8 +36,8 @@ const Vechicles = ({ userData }: any) => {
                 ))
               )}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className="bg-[#2463d4] h-16 w-16 text-white" />
+            <CarouselNext  className="bg-[#2463d4] h-16 w-16 text-white"/>
           </Carousel>
         </div>
       )}

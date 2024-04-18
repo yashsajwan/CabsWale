@@ -27,11 +27,10 @@ const DriverDetailsPage = (props: any) => {
   useEffect(() => {
     async function fetchData() {
       setLoading(true);
-      // let data = await fetchFromFirebase(props.phone);
-      // localStorage.setItem("item", data? JSON.stringify(data) : "");
-      let data = localStorage.getItem("item");
-      data = JSON.parse(data ? data : "");
-      console.log(data);
+      let data = await fetchFromFirebase(props.phone);
+      localStorage.setItem("item", data? JSON.stringify(data) : "");
+      // let data = localStorage.getItem("item");
+      // data = JSON.parse(data ? data : "");
       setUserData(data);
       setLoading(false);
     }
@@ -39,7 +38,7 @@ const DriverDetailsPage = (props: any) => {
   }, []);
   return loading ? (
     <>
-      <h1>Loading...</h1>
+      <h1 className="text-3xl">Loading...</h1>
     </>
   ) : (
     <>
@@ -54,7 +53,7 @@ const DriverDetailsPage = (props: any) => {
         </>
       ) : (
         <>
-          <div>There is no such profile.</div>
+          <h1 className="text-3xl">No profile.</h1>
         </>
       )}
     </>

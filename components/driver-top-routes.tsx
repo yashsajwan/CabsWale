@@ -7,24 +7,24 @@ import { PhoneCall } from "lucide-react";
 const TopRoutes = ({ userData }: any) => {
   return (
     <>
-      <div>TopRoutes</div>
+      <div className="text-3xl my-10 bg-yellow-500 p-2">TopRoutes</div>
       {userData.routes.length === 0 ? (
-        <div>No routes.</div>
+        <div className="text-3xl">No routes.</div>
       ) : (
         <>
           <div>
             {userData.routes.map((route: any, idx: number) => (
-              <div className="flex" key={idx}>
-                <h2>{route.from}</h2>
-                <ArrowRight />
-                <h2>{route.to}</h2>
+              <div className="flex justify-center items-center" key={idx}>
+                <h2 className="text-2xl p-2">{route.from}</h2>
+                <ArrowRight className="bg-[#2463d4] m-2 h-12 w-12 text-white"/>
+                <h2 className="text-2xl p-2">{route.to}</h2>
               </div>
             ))}
           </div>
 
           <div className="my-10 flex justify-around">
             <Link href={`https://wa.me/${userData.phoneNo}`}>
-              <h2 className="bg-blue-400 p-5 flex justify-center items-center">
+              <h2 className="bg-[#2463d4] rounded-lg text-white text-2xl p-5 flex justify-center items-center">
                 {" "}
                 <Image
                   src="/images/whatsapp.jpg"
@@ -38,8 +38,8 @@ const TopRoutes = ({ userData }: any) => {
             </Link>
 
             <Link href={`tel:${userData.phoneNo}`}>
-              <h2 className="bg-blue-400 p-5 flex justify-center items-center">
-                <PhoneCall className="bg-white rounded-full w-20 h-auto px-5 mr-3" />{" "}
+              <h2 className="bg-[#2463d4] rounded-lg text-white text-2xl p-5 flex justify-center items-center">
+                <PhoneCall className="bg-white text-black rounded-full w-24 h-9 px-5 mr-3" />{" "}
                 Call
               </h2>
             </Link>
