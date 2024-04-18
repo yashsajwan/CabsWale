@@ -5,6 +5,8 @@ import { collection, getDocs } from "firebase/firestore";
 
 import ProfileHeader from "./driver-profile-header";
 import Vechicles from "./driver-vehicles";
+import TopRoutes from "./driver-top-routes";
+import AppDownload from "./app-download";
 
 async function fetchFromFirebase(phone: string) {
   const snapshot = await getDocs(collection(db, "drivers"));
@@ -46,6 +48,8 @@ const DriverDetailsPage = (props: any) => {
           <div className="m-10">
             <ProfileHeader userData={userData} />
             <Vechicles userData={userData} />
+            <TopRoutes userData={userData} />
+            <AppDownload />
           </div>
         </>
       ) : (
