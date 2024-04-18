@@ -3,12 +3,15 @@ import { useEffect, useState } from "react";
 import { db } from "../config/firebase-config";
 import { collection, getDocs } from "firebase/firestore";
 
-async function fetchFromFirebase(phone:string){
+import ProfileHeader from "./driver-profile-header";
+import Vechicles from "./driver-vehicles";
+
+async function fetchFromFirebase(phone: string) {
   const snapshot = await getDocs(collection(db, "drivers"));
-  let data: any = [];
+  let data = null;
   snapshot.forEach((doc) => {
     if (doc.data().phoneNo === "+" + phone) {
-      data.push(doc.data());
+      data = doc.data();
       return data;
     }
   });
@@ -16,23 +19,40 @@ async function fetchFromFirebase(phone:string){
 }
 
 const DriverDetailsPage = (props: any) => {
-  const [userData, setUserData] = useState([{ city: "" }]);
+  const [userData, setUserData] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
-      let data = await fetchFromFirebase(props.phone);
+      setLoading(true);
+      // let data = await fetchFromFirebase(props.phone);
+      // localStorage.setItem("item", data? JSON.stringify(data) : "");
+      let data = localStorage.getItem("item");
+      data = JSON.parse(data ? data : "");
       console.log(data);
       setUserData(data);
+      setLoading(false);
     }
     fetchData();
   }, []);
-  return (
+  return loading ? (
     <>
-      {userData.map((item, idx) => (
-        <p key={idx}>
-            {item.city}
-        </p>
-      ))}
+      <h1>Loading...</h1>
+    </>
+  ) : (
+    <>
+      {userData ? (
+        <>
+          <div className="m-10">
+            <ProfileHeader userData={userData} />
+            <Vechicles userData={userData} />
+          </div>
+        </>
+      ) : (
+        <>
+          <div>There is no such profile.</div>
+        </>
+      )}
     </>
   );
 };
