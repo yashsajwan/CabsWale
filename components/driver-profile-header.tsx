@@ -4,18 +4,18 @@ import Link from "next/link";
 const ProfileHeader = ({ userData }: any) => {
   return (
     <>
-        <div className="flex px-auto items-center bg-yellow-500 p-5">
+        <div className="flex px-auto items-center bg-[#f9df04] p-5">
           <Image
             src={userData.profile_image}
             width={200}
             height={200}
             alt="Picture of the driver"
             objectFit="cover"
-            className="rounded-full bg-auto w-52 h-52 mr-7"
+            className="w-32 h-32 rounded-full bg-auto sm:w-52 sm:h-52 mr-7"
           />
           <div className="flex flex-col">
-            <div className="flex">
-              <h2 className="text-[3rem] ">{userData.name}</h2>
+            <div className="flex flex-col sm:flex-row">
+              <h2 className="text-lg sm:text-[3rem] ">{userData.name}</h2>
               {userData.fraud ? (
                 <Image
                   src="/images/fr.png"
@@ -59,7 +59,7 @@ const ProfileHeader = ({ userData }: any) => {
             href="https://play.google.com/store/apps/details?id=com.app.cabswalle"
             className=" text-white  p-5 text-2xl my-5"
           >
-            <h2 className="text-xl">Connect with me on CabsWale App</h2>
+            <h2 className="text-xl text-center p-2">Connect with me on CabsWale App</h2>
           </Link>
         </div>
 

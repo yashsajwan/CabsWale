@@ -12,12 +12,12 @@ import {
 const Vechicles = ({ userData }: any) => {
   return (
     <>
-      <div className="text-3xl my-10 bg-yellow-500 p-2">Vechicles</div>
+      <div className="text-3xl my-10 bg-[#f9df04] p-2">Vechicles</div>
       {userData.vehicles.length === 0 ? (
         <div className="text-3xl">No Vechicles.</div>
       ) : (
         <div className="flex justify-center items-center">
-          <Carousel className="w-1/2 h-[30rem] ">
+          <Carousel className="w-full md:w-1/2 h-[30rem] ">
             <CarouselContent>
               {userData.vehicles.map((vehicle: any) =>
                 vehicle.images.map((cab: string) => (
