@@ -8,6 +8,9 @@ import Vechicles from "./driver-vehicles";
 import TopRoutes from "./driver-top-routes";
 import AppDownload from "./app-download";
 
+import Lottie from "lottie-react";
+import loader from "@/public/loader.json";
+
 async function fetchFromFirebase(phone: string) {
   const snapshot = await getDocs(collection(db, "drivers"));
   let data = null;
@@ -22,7 +25,7 @@ async function fetchFromFirebase(phone: string) {
 
 const DriverDetailsPage = (props: any) => {
   const [userData, setUserData] = useState<any>(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
@@ -38,13 +41,19 @@ const DriverDetailsPage = (props: any) => {
   }, []);
   return loading ? (
     <>
-      <h1 className="text-3xl">Loading...</h1>
+      <h1 className="text-4xl justify-center items-center mt-32 flex flex-col">
+        <div className="">
+          <Lottie animationData={loader} />
+        </div>
+
+        <span>Loading...</span>
+      </h1>
     </>
   ) : (
     <>
       {userData ? (
         <>
-          <div className="m-10">
+          <div className="m-5 sm:m-10">
             <ProfileHeader userData={userData} />
             <Vechicles userData={userData} />
             <TopRoutes userData={userData} />
@@ -53,7 +62,7 @@ const DriverDetailsPage = (props: any) => {
         </>
       ) : (
         <>
-          <h1 className="text-3xl">No profile.</h1>
+          <h1 className="text-3xl text-center mt-32">No profile.</h1>
         </>
       )}
     </>
