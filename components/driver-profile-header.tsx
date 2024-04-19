@@ -15,7 +15,7 @@ const ProfileHeader = ({ userData }: any) => {
           />
           <div className="flex flex-col">
             <div className="flex">
-              <h2 className="text-lg sm:text-[2.5rem] py-4 px-1 ">{userData.name}</h2>
+              <h2 className="text-2xl sm:text-3xl py-4 px-1 ">{userData.name}</h2>
               {userData.fraud ? (
                 <Image
                   src="/images/fr.png"
