@@ -5,17 +5,20 @@ const ProfileHeader = ({ userData }: any) => {
   return (
     <>
         <div className="flex items-center backdrop-blur-2xl p-5">
-          <Image
-            src={userData.profile_image}
+          {
+             
+            <Image
+            src={userData.profile_image?userData.profile_image: '/images/profile.jpg'}
             width={200}
             height={200}
             alt="Picture of the driver"
             objectFit="cover"
             className="w-32 h-32 rounded-full bg-auto sm:w-52 sm:h-52 mr-7"
           />
+          }
           <div className="flex flex-col">
             <div className="flex">
-              <h2 className="text-2xl sm:text-3xl py-4 px-1 ">{userData.name}</h2>
+              <h2 className="text-2xl sm:text-3xl py-4 px-1 ">{userData.name?userData.name  : "Unknown" }</h2>
               {userData.fraud ? (
                 <Image
                   src="/images/fr.png"

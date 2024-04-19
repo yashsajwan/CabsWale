@@ -9,7 +9,7 @@ const TopRoutes = ({ userData }: any) => {
     <>
       <div className="text-2xl sm:text-3xl my-5 p-2">Top Routes :</div>
       {userData.routes.length === 0 ? (
-        <div className="text-3xl">No routes found.</div>
+        <div className="text-xl p-2 text-gray">No routes found.</div>
       ) : (
         <>
           <div>

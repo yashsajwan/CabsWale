@@ -14,7 +14,7 @@ const Vechicles = ({ userData }: any) => {
     <>
       <div className="text-2xl sm:text-3xl my-5 p-2">Vehicles :</div>
       {userData.vehicles.length === 0 ? (
-        <div className="text-3xl">No Vechicles found.</div>
+        <div className="text-xl p-2 text-gray">No Vechicles found.</div>
       ) : (
         <div className="flex justify-center items-center">
           <Carousel className="w-full md:w-1/2 h-[30rem] ">
