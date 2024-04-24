@@ -26,19 +26,26 @@ async function fetchFromFirebase(phone: string) {
 const DriverDetailsPage = (props: any) => {
   const [userData, setUserData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [dataPresent, setDataPresent] = useState("");
 
   useEffect(() => {
+    let data: any = localStorage.getItem("item");
+    data = JSON.parse(data ? data : null);
+    if (data && data.phoneNo === "+" + props.phone) {
+      setUserData(data);
+      setLoading(false);
+      return;
+    }
+
     async function fetchData() {
       setLoading(true);
       let data = await fetchFromFirebase(props.phone);
-      localStorage.setItem("item", data? JSON.stringify(data) : "");
-      // let data = localStorage.getItem("item");
-      // data = JSON.parse(data ? data : "");
+      localStorage.setItem("item", data ? JSON.stringify(data) : "");
       setUserData(data);
       setLoading(false);
     }
     fetchData();
-  }, []);
+  }, [props.phone]);
   return loading ? (
     <>
       <h1 className="text-4xl justify-center items-center mt-32 flex flex-col">
